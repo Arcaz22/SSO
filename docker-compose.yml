@@ -4,9 +4,15 @@ services:
   api:
     build:
       context: .
-    container_name: sso_chandra
+    container_name: sso_chandra_app
     restart: always
     ports:
       - "${APP_PORT}:8000"
     env_file:
       - .env
+    networks:
+      - sso_network
+
+networks:
+  sso_network:
+    external: true
